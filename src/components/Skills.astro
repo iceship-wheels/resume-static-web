@@ -1,0 +1,36 @@
+---
+export interface SkillGroup {
+  name: string;
+  items: string[];
+}
+
+export interface Props {
+  groups: SkillGroup[];
+}
+
+const { groups } = Astro.props;
+---
+
+<section id="skills" class="py-24 px-6 bg-surface/30">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="font-display text-3xl md:text-4xl font-bold mb-16 text-center">
+      技能 & 工具
+      <span class="block w-12 h-0.5 bg-accent mx-auto mt-4" />
+    </h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {groups.map((group) => (
+        <div class="bg-surface/50 rounded-2xl p-6 border border-white/5">
+          <h3 class="font-display text-lg font-bold mb-4 text-accent">{group.name}</h3>
+          <div class="flex flex-wrap gap-2">
+            {group.items.map((item) => (
+              <span class="px-3 py-1.5 text-sm bg-muted/20 rounded-lg border border-white/5 text-white/70 hover:border-accent/30 hover:text-white transition-colors">
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

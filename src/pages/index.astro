@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Works from '../components/Works.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
+import Contact from '../components/Contact.astro';
+
+const works = [
+  {
+    title: '城市光影',
+    category: '视觉设计',
+    image: 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=600',
+    description: '以城市夜景为灵感的视觉装置，探索光与空间的对话关系。',
+    year: '2024',
+  },
+  {
+    title: '流动的边界',
+    category: '策展项目',
+    image: 'https://images.unsplash.com/photo-1531243269054-5ebf6f34081e?w=600',
+    description: '跨媒介艺术群展，汇聚12位艺术家对身份认同的探讨。',
+    year: '2024',
+  },
+  {
+    title: '声音景观',
+    category: '影像作品',
+    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600',
+    video: '',
+    description: '实验影像作品，将城市声景转化为可视化的动态图形。',
+    year: '2023',
+  },
+  {
+    title: '品牌重塑 · 野声',
+    category: '品牌策划',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600',
+    description: '独立音乐厂牌全案品牌策划，从视觉识别到线上触点设计。',
+    year: '2023',
+  },
+  {
+    title: '数字花园',
+    category: '视觉设计',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600',
+    description: '生成艺术系列，算法驱动的植物形态视觉探索。',
+    year: '2023',
+  },
+  {
+    title: '回声计划',
+    category: '策展项目',
+    image: 'https://images.unsplash.com/photo-1549490349-8643362247b5?w=600',
+    description: '社区参与式艺术项目，通过声音采集构建集体记忆地图。',
+    year: '2022',
+  },
+];
+
+const experiences = [
+  {
+    role: '独立策展人 / 创意总监',
+    company: '自由职业',
+    period: '2022 - 至今',
+    description: '策划多场跨媒介艺术展览，为品牌客户提供视觉策略与创意方案，涵盖品牌全案、展览策划与视觉设计。',
+    tags: ['策展', '品牌策略', '视觉设计', '项目管理'],
+  },
+  {
+    role: '高级视觉设计师',
+    company: '某创意工作室',
+    period: '2019 - 2022',
+    description: '主导品牌视觉系统设计，负责展览空间视觉与互动装置的创意执行，参与多个国际艺术博览会项目。',
+    tags: ['视觉系统', '互动装置', '博览会'],
+  },
+  {
+    role: '策划编辑',
+    company: '某艺术媒体平台',
+    period: '2017 - 2019',
+    description: '负责艺术内容策划与编辑，撰写展览评论与艺术家访谈，运营新媒体渠道，粉丝增长200%。',
+    tags: ['内容策划', '艺术评论', '新媒体'],
+  },
+];
+
+const skillGroups = [
+  {
+    name: '设计工具',
+    items: ['Figma', 'Adobe CC', 'Blender', 'Cinema 4D', 'After Effects'],
+  },
+  {
+    name: '策展 & 策划',
+    items: ['展览策划', '品牌全案', '内容策略', '项目管理', '活动执行'],
+  },
+  {
+    name: '技术 & 创意编码',
+    items: ['HTML/CSS', 'p5.js', 'TouchDesigner', 'Processing', 'Notion'],
+  },
+];
+---
+
+<Layout title="个人简历 | 艺术策划">
+  <Hero
+    name="张 艺"
+    title="策展人 / 视觉设计师 / 创意策划"
+    subtitle="ART & CURATORIAL"
+  />
+
+  <About
+    avatar="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop"
+    bio="跨领域创意工作者，专注于当代艺术策展与视觉设计。致力于在艺术、技术与商业的交汇处，创造具有深度与温度的视觉体验。曾策划多场展览与品牌项目，作品涵盖视觉设计、互动装置与影像创作。相信好的设计不仅是视觉的，更是情感的连接。"
+    highlights={['8年+ 创意经验', '30+ 策展项目', '15+ 品牌合作', '国际博览会参展']}
+  />
+
+  <Works works={works} />
+
+  <Experience experiences={experiences} />
+
+  <Skills groups={skillGroups} />
+
+  <Contact
+    email="hello@example.com"
+    phone="+86 138-0000-0000"
+    wechat="zhangyi_art"
+    location="上海, 中国"
+    socials={[
+      { name: 'Behance', url: '#' },
+      { name: 'IG', url: '#' },
+      { name: '小红书', url: '#' },
+    ]}
+  />
+</Layout>

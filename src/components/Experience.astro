@@ -1,0 +1,48 @@
+---
+export interface Experience {
+  role: string;
+  company: string;
+  period: string;
+  description: string;
+  tags?: string[];
+}
+
+export interface Props {
+  experiences: Experience[];
+}
+
+const { experiences } = Astro.props;
+---
+
+<section id="experience" class="py-24 px-6">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="font-display text-3xl md:text-4xl font-bold mb-16 text-center">
+      工作经历
+      <span class="block w-12 h-0.5 bg-accent mx-auto mt-4" />
+    </h2>
+
+    <div class="relative">
+      <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-white/10 md:-translate-x-px" />
+
+      {experiences.map((exp, i) => (
+        <div class={`relative mb-12 md:w-1/2 pl-12 md:pl-0 ${i % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:ml-auto md:pl-12'}`}>
+          <div class={`absolute top-1 left-2.5 md:left-auto w-3 h-3 rounded-full bg-accent border-2 border-primary ${i % 2 === 0 ? 'md:right-[-6.5px]' : 'md:left-[-6.5px]'}`} />
+
+          <span class="text-accent text-xs font-medium tracking-wider">{exp.period}</span>
+          <h3 class="font-display text-xl font-bold mt-1">{exp.role}</h3>
+          <p class="text-white/50 text-sm mt-1">{exp.company}</p>
+          <p class="text-white/60 text-sm mt-3 leading-relaxed">{exp.description}</p>
+          {exp.tags && (
+            <div class={`flex flex-wrap gap-2 mt-3 ${i % 2 === 0 ? 'md:justify-end' : ''}`}>
+              {exp.tags.map((tag) => (
+                <span class="text-xs px-2 py-0.5 rounded-full bg-muted/30 text-white/50 border border-white/5">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

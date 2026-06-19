@@ -1,0 +1,88 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = '艺术策划从业者 - 个人简历与作品集' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+    <script is:inline src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+  <body
+    class="bg-primary text-white font-body antialiased"
+    x-data="{ mobileOpen: false }"
+  >
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 bg-primary/80 backdrop-blur-md border-b border-white/10"
+    >
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="font-display text-xl font-bold tracking-wide text-accent">
+          PORTFOLIO
+        </a>
+        <div class="hidden md:flex gap-8 text-sm font-medium">
+          <a href="#about" class="hover:text-accent transition-colors">关于</a>
+          <a href="#works" class="hover:text-accent transition-colors">作品</a>
+          <a href="#experience" class="hover:text-accent transition-colors">经历</a>
+          <a href="#skills" class="hover:text-accent transition-colors">技能</a>
+          <a href="#contact" class="hover:text-accent transition-colors">联系</a>
+        </div>
+        <button
+          class="md:hidden text-white"
+          @click="mobileOpen = !mobileOpen"
+          aria-label="菜单"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              x-show="!mobileOpen"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+            <path
+              x-show="mobileOpen"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        x-show="mobileOpen"
+        x-transition
+        class="md:hidden bg-surface border-t border-white/10"
+      >
+        <div class="flex flex-col gap-4 px-6 py-4 text-sm font-medium">
+          <a href="#about" @click="mobileOpen = false" class="hover:text-accent transition-colors">关于</a>
+          <a href="#works" @click="mobileOpen = false" class="hover:text-accent transition-colors">作品</a>
+          <a href="#experience" @click="mobileOpen = false" class="hover:text-accent transition-colors">经历</a>
+          <a href="#skills" @click="mobileOpen = false" class="hover:text-accent transition-colors">技能</a>
+          <a href="#contact" @click="mobileOpen = false" class="hover:text-accent transition-colors">联系</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-16">
+      <slot />
+    </main>
+
+    <footer class="border-t border-white/10 py-8 text-center text-xs text-white/40">
+      <p>&copy; {new Date().getFullYear()} All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>

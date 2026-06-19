@@ -1,0 +1,65 @@
+---
+export interface Props {
+  name: string;
+  title: string;
+  subtitle?: string;
+  videoSrc?: string;
+  imageSrc?: string;
+}
+
+const { name, title, subtitle = '', videoSrc, imageSrc } = Astro.props;
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  {videoSrc && (
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover opacity-30"
+    >
+      <source src={videoSrc} type="video/mp4" />
+    </video>
+  )}
+  {imageSrc && !videoSrc && (
+    <img
+      src={imageSrc}
+      alt="背景"
+      class="absolute inset-0 w-full h-full object-cover opacity-20"
+    />
+  )}
+  <div class="absolute inset-0 bg-gradient-to-b from-primary/60 via-transparent to-primary" />
+
+  <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
+    <p class="text-accent text-sm tracking-[0.3em] uppercase mb-4 font-medium">
+      {subtitle}
+    </p>
+    <h1 class="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight">
+      {name}
+    </h1>
+    <p class="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+      {title}
+    </p>
+    <div class="mt-10 flex gap-4 justify-center">
+      <a
+        href="#works"
+        class="px-8 py-3 bg-accent text-white text-sm font-medium rounded-full hover:bg-accent/80 transition-colors"
+      >
+        查看作品
+      </a>
+      <a
+        href="#contact"
+        class="px-8 py-3 border border-white/30 text-white text-sm font-medium rounded-full hover:border-accent hover:text-accent transition-colors"
+      >
+        联系我
+      </a>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</section>

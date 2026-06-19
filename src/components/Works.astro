@@ -1,0 +1,92 @@
+---
+export interface Work {
+  title: string;
+  category: string;
+  image: string;
+  video?: string;
+  description?: string;
+  year?: string;
+}
+
+export interface Props {
+  works: Work[];
+}
+
+const { works } = Astro.props;
+---
+
+<section id="works" class="py-24 px-6 bg-surface/30">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-display text-3xl md:text-4xl font-bold mb-16 text-center">
+      作品集
+      <span class="block w-12 h-0.5 bg-accent mx-auto mt-4" />
+    </h2>
+
+    <div
+      x-data="{ filter: 'all' }"
+      class="space-y-10"
+    >
+      <div class="flex justify-center gap-3 flex-wrap">
+        {['all', '视觉设计', '策展项目', '影像作品', '品牌策划'].map((cat) => (
+          <button
+            class="px-5 py-2 rounded-full text-sm border transition-colors"
+            :class={cat === 'all'
+              ? "filter === 'all' ? 'bg-accent border-accent text-white' : 'border-white/20 text-white/60 hover:border-accent hover:text-accent'"
+              : `filter === '${cat}' ? 'bg-accent border-accent text-white' : 'border-white/20 text-white/60 hover:border-accent hover:text-accent'`
+            }
+            @click={`filter = '${cat}'`}
+          >
+            {cat === 'all' ? '全部' : cat}
+          </button>
+        ))}
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {works.map((work) => (
+          <div
+            x-show={`filter === 'all' || filter === '${work.category}'`}
+            x-transition
+            class="group bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-accent/30 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5"
+          >
+            <div class="relative aspect-video overflow-hidden">
+              {work.video ? (
+                <video
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  @mouseenter="$el.play()"
+                  @mouseleave="$el.pause(); $el.currentTime = 0"
+                >
+                  <source src={work.video} type="video/mp4" />
+                </video>
+              ) : (
+                <img
+                  src={work.image}
+                  alt={work.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              )}
+              <div class="absolute top-3 right-3 bg-primary/70 backdrop-blur-sm text-xs px-3 py-1 rounded-full text-white/80">
+                {work.category}
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-display text-lg font-bold">{work.title}</h3>
+                {work.year && (
+                  <span class="text-xs text-white/40">{work.year}</span>
+                )}
+              </div>
+              {work.description && (
+                <p class="text-sm text-white/50 line-clamp-2">{work.description}</p>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
