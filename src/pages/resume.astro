@@ -1,0 +1,273 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const educations = [
+  {
+    period: '2023.09 - 2026.06',
+    school: '北京电影学院',
+    major: '电影理论与批评 · 硕士研究生',
+    details: [
+      '主修课程：电影史、艺术史、视听语言、电影理论、中国艺术传统与中国电影、电影与跨媒介叙事研究',
+      '以入学考试综合分第3名的成绩，获得2023年北京电影学院研究生学业奖学金',
+    ],
+  },
+  {
+    period: '2019.09 - 2023.06',
+    school: '中国戏曲学院',
+    major: '戏剧影视文学 · 本科',
+    details: [
+      '主修课程：文学史、戏剧史、戏曲舞台形态、戏曲传统剧目整理改编、戏曲大戏写作、戏曲论文写作',
+      '毕业论文《地方剧团的生存现状与自救手段——福建仙游鲤声剧团调研报告》获北京市2023届本科优秀毕业论文荣誉（全校该年度仅2个市级本科优秀毕业设计/论文名额）',
+    ],
+  },
+];
+
+const internships = [
+  {
+    period: '2025.09 - 2025.11',
+    company: '苏河皓司商业管理（上海）有限公司',
+    role: '新媒体运营',
+    points: [
+      '负责公众号"苏河皓司SUHE HAUS"编写运营，独立完成展览资讯、艺术家访谈等稿件撰写',
+      '运用秀米、可画进行视觉化排版，主导小红书、视频号、Instagram、YouTube平台维护与内容发布',
+      '2个月内实现公众号粉丝增长1200+，小红书粉丝增长800+',
+      '对接参展艺术家，撰写访谈提纲并进行现场采访，使用剪映完成视频剪辑与字幕添加',
+      '负责艺术衍生品线上商城日常运维（商品上架、订单处理、库存管理）',
+    ],
+  },
+  {
+    period: '2025.06 - 2025.09',
+    company: '窗画廊',
+    role: '策展助理',
+    points: [
+      '协助策划《石库门的新生》（上海世博会博物馆、日本大阪世博会）、《Where The Roads Took Them》（美国）、《月球计划》等展览',
+      '整理归档艺术作品，制作展厅模型、展陈方案、展陈效果图',
+      '与布展方、物业方对接，支撑展览与活动顺利落地',
+      '负责展厅日常运营：艺术品维护归档、VR设备维护、展览活动策划与执行、活动现场影像记录',
+    ],
+  },
+  {
+    period: '2024.04 - 2024.11',
+    company: '第23届国际学生影视作品展',
+    role: '文化交流部部长、评委专班统筹',
+    points: [
+      '主导志愿者招募，6场面试招募30+名志愿者，带领团队推进影展活动',
+      '翻译、整理70+部影片基本信息，配合完成影展手册、展墙、海报等物料编辑',
+      '策划2场电影大师班：背景调查、问题设置、活动方案撰写、VCR制作、现场执行',
+      '组建评委专班，统筹国际评委接待（接送机、车辆调度、酒店餐食、现场引导、采访VCR拍摄）',
+      '接待柯文思（Malcolm Clarke）、大卫·怀特（David White）、刘伽茵等5位国内外知名电影人',
+    ],
+  },
+  {
+    period: '2024.04',
+    company: '第14届北京国际电影节',
+    role: '映后交流场次摄影',
+    points: [
+      '负责《逍遥游》《家庭简史》两个场次的映后交流现场摄影、图片整理和后期修图',
+    ],
+  },
+  {
+    period: '2023.01 - 2023.02',
+    company: '福建省厦门骆驼人片场',
+    role: '场景设计助理、新媒体运营',
+    points: [
+      '讨论、落实场景设计师创意，执行道具采购及布置',
+      '负责公众号"骆驼人片场"编写运营',
+    ],
+  },
+  {
+    period: '2021.12 - 2022.02',
+    company: '福建黄金时代传媒艺考中心',
+    role: '新媒体运营',
+    points: [
+      '负责公众号"黄金时代EDU"编写运营，独立完成推送30余篇，累计阅读量超1万次',
+    ],
+  },
+];
+
+const campusExperiences = [
+  {
+    period: '2024.04',
+    org: '北京电影学院《雪豹》电影学术研讨会',
+    role: '摄影、新闻稿撰写',
+  },
+  {
+    period: '2023.10',
+    org: '中国高校影视学会第16届影视高层论坛',
+    role: '摄影、新闻稿撰写',
+  },
+  {
+    period: '2023.10 - 2024.06',
+    org: '北京电影学院党政办公室',
+    role: '学生行政助理',
+  },
+  {
+    period: '2021.01',
+    org: '中国戏曲学院研究生跨系部联合项目 · 戏曲电影《独步行吟》',
+    role: '生活制片',
+  },
+];
+
+const skills = [
+  '大学英语六级（559分），听说读写能力俱佳',
+  '熟练使用Office、Keynote等办公软件',
+  '熟练使用AI工具（Deepseek、豆包、千问等）进行文档润色与创意文案生成',
+  '熟练使用SketchUp进行展览活动策划、展厅建模、展陈效果图生成',
+  '熟练使用秀米、可画等工具，进行微信公众号文章排版',
+  '掌握图片与视频拍摄技巧，熟练使用剪映进行后期制作，擅长活动摄影摄像、风俗摄影',
+];
+---
+
+<Layout title="骆影丽 求职简历">
+  <style>
+    @media print {
+      nav, footer, .no-print { display: none !important; }
+      body { background: white !important; color: black !important; }
+      .print-white { background: white !important; color: black !important; }
+      .print-gray { color: #374151 !important; }
+      .print-dark { color: #111827 !important; }
+      .print-red { color: #b91c1c !important; }
+      .print-border-color { border-color: #e5e7eb !important; }
+      @page { margin: 1.5cm 1.2cm 1.2cm 1.2cm; }
+      section { break-inside: avoid; }
+      h2 { break-after: avoid; }
+    }
+  </style>
+
+  <div class="max-w-3xl mx-auto px-6 py-6 pb-20 print-white">
+
+    <!-- Buttons -->
+    <div class="no-print flex justify-center gap-4 mb-8">
+      <button id="btn-paged"
+        class="px-6 py-2 bg-accent text-white text-sm font-medium rounded-full hover:bg-accent/80 transition-colors inline-flex items-center gap-2"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        导出 PDF (推荐)
+      </button>
+      <button
+        onclick="window.print()"
+        class="px-6 py-2 border border-white/20 text-white/60 text-sm font-medium rounded-full hover:border-accent hover:text-accent transition-colors inline-flex items-center gap-2"
+      >
+        浏览器打印
+      </button>
+    </div>
+
+    <!-- Resume content for Paged.js -->
+    <div id="resume-content">
+
+    <!-- Header -->
+    <div class="text-center mb-6 print-gray">
+      <h1 class="font-display text-3xl font-bold tracking-wide print-dark">骆影丽</h1>
+      <p class="text-white/50 print-gray text-xs mt-1">Riley Luo</p>
+      <p class="text-white/60 print-gray text-xs mt-2">
+        15280057010 &nbsp;|&nbsp; riley18@163.com &nbsp;|&nbsp; 2001.04 &nbsp;|&nbsp; MBTI: ISTJ
+      </p>
+    </div>
+
+    <hr class="print-border-color border-white/10 mb-6" />
+
+    <!-- Education -->
+    <section class="mb-6">
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.125rem; font-weight: 700; color: #e94560; margin: 0 0 0.75rem 0;">教育背景</h2>
+      <div class="space-y-4">
+        {educations.map((edu) => (
+          <div>
+            <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+              <h3 class="font-bold text-sm print-dark">{edu.school} · <span class="font-normal text-white/60 print-gray">{edu.major}</span></h3>
+              <span class="text-xs text-accent font-medium whitespace-nowrap print-red">{edu.period}</span>
+            </div>
+            <ul class="space-y-1">
+              {edu.details.map((d) => (
+                <li class="text-xs text-white/70 print-gray ml-4 list-disc list-outside">{d}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Internship -->
+    <section class="mb-6">
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.125rem; font-weight: 700; color: #e94560; margin: 0 0 0.75rem 0;">实习经历</h2>
+      <div class="space-y-4">
+        {internships.map((exp) => (
+          <div>
+            <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+              <h3 class="font-bold text-sm print-dark">{exp.company} · <span class="font-normal text-white/60 print-gray">{exp.role}</span></h3>
+              <span class="text-xs text-accent font-medium whitespace-nowrap print-red">{exp.period}</span>
+            </div>
+            <ul class="space-y-0.5">
+              {exp.points.map((p) => (
+                <li class="text-xs text-white/70 print-gray ml-4 list-disc list-outside">{p}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Campus -->
+    <section style="margin-bottom: 1.5rem">
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.125rem; font-weight: 700; color: #e94560; margin: 0 0 0.75rem 0;">校园经历</h2>
+      <div class="space-y-2">
+        {campusExperiences.map((exp) => (
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <div>
+              <span class="font-medium text-sm print-dark">{exp.org}</span>
+              <span class="text-white/50 print-gray text-sm ml-2">{exp.role}</span>
+            </div>
+            <span class="text-xs text-accent font-medium whitespace-nowrap print-red">{exp.period}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="mb-6">
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.125rem; font-weight: 700; color: #e94560; margin: 0 0 0.75rem 0;">个人技能</h2>
+      <ul class="space-y-1">
+        {skills.map((s) => (
+          <li class="text-xs text-white/70 print-gray ml-4 list-disc list-outside">{s}</li>
+        ))}
+      </ul>
+    </section>
+
+    </div>
+    <!-- End resume-content -->
+
+    <!-- Back link -->
+    <div class="no-print text-center pt-4 pb-8">
+      <a href={`${import.meta.env.BASE_URL}/`} class="text-sm text-white/40 hover:text-accent transition-colors">
+        返回主页
+      </a>
+    </div>
+
+  </div>
+</Layout>
+
+<script>
+  import { Previewer } from 'pagedjs';
+
+  document.getElementById('btn-paged').addEventListener('click', async () => {
+    const btn = document.getElementById('btn-paged');
+    btn.disabled = true;
+    btn.textContent = '正在生成 PDF...';
+
+    const content = document.getElementById('resume-content');
+    const paged = new Previewer();
+
+    try {
+      const flow = await paged.preview(content, undefined, document.body);
+      await flow.print();
+    } catch (err) {
+      console.error('Paged.js error:', err);
+      alert('生成 PDF 失败，请尝试"浏览器打印"按钮。');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = '导出 PDF';
+      // Clean up Paged.js rendered pages
+      const pages = document.querySelectorAll('.pagedjs_page');
+      pages.forEach(p => p.remove());
+    }
+  });
+</script>

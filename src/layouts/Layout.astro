@@ -5,6 +5,7 @@ export interface Props {
 }
 
 const { title, description = '艺术策划从业者 - 个人简历与作品集' } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <!doctype html>
@@ -13,7 +14,7 @@ const { title, description = '艺术策划从业者 - 个人简历与作品集' 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
       rel="stylesheet"
@@ -26,18 +27,15 @@ const { title, description = '艺术策划从业者 - 个人简历与作品集' 
     x-data="{ mobileOpen: false }"
   >
     <nav
-      class="fixed top-0 left-0 right-0 z-50 bg-primary/80 backdrop-blur-md border-b border-white/10"
+      class="fixed top-0 left-0 right-0 z-50 h-12 bg-primary/80 backdrop-blur-md border-b border-white/10"
     >
-      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" class="font-display text-xl font-bold tracking-wide text-accent">
+      <div class="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
+        <a href={`${base}/`} class="font-display text-xl font-bold tracking-wide text-accent">
           PORTFOLIO
         </a>
         <div class="hidden md:flex gap-8 text-sm font-medium">
-          <a href="#about" class="hover:text-accent transition-colors">关于</a>
-          <a href="#works" class="hover:text-accent transition-colors">作品</a>
-          <a href="#experience" class="hover:text-accent transition-colors">经历</a>
-          <a href="#skills" class="hover:text-accent transition-colors">技能</a>
-          <a href="#contact" class="hover:text-accent transition-colors">联系</a>
+          <a href={`${base}/`} class="hover:text-accent transition-colors">主页</a>
+          <a href={`${base}/resume`} class="hover:text-accent transition-colors">简历</a>
         </div>
         <button
           class="md:hidden text-white"
@@ -68,16 +66,13 @@ const { title, description = '艺术策划从业者 - 个人简历与作品集' 
         class="md:hidden bg-surface border-t border-white/10"
       >
         <div class="flex flex-col gap-4 px-6 py-4 text-sm font-medium">
-          <a href="#about" @click="mobileOpen = false" class="hover:text-accent transition-colors">关于</a>
-          <a href="#works" @click="mobileOpen = false" class="hover:text-accent transition-colors">作品</a>
-          <a href="#experience" @click="mobileOpen = false" class="hover:text-accent transition-colors">经历</a>
-          <a href="#skills" @click="mobileOpen = false" class="hover:text-accent transition-colors">技能</a>
-          <a href="#contact" @click="mobileOpen = false" class="hover:text-accent transition-colors">联系</a>
+          <a href={`${base}/`} @click="mobileOpen = false" class="hover:text-accent transition-colors">主页</a>
+          <a href={`${base}/resume`} @click="mobileOpen = false" class="hover:text-accent transition-colors">简历</a>
         </div>
       </div>
     </nav>
 
-    <main class="pt-16">
+    <main class="pt-12">
       <slot />
     </main>
 
